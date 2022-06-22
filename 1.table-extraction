@@ -1,0 +1,6 @@
+import pandas as pd
+simpsons = pd.read_html("https://en.wikipedia.org/wiki/List_of_The_Simpsons_episodes_(seasons_1%E2%80%9320)")
+
+len(simpsons). # shows how many tables 
+simpsons[1] # first table to see
+simpsons[2] # second table 
