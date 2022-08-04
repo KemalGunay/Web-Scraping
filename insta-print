@@ -1,0 +1,33 @@
+# REF
+# https://www.youtube.com/watch?v=cAajsj4NpaE
+
+
+
+
+from bs4 import BeautifulSoup
+import requests
+URL = "https://www.instagram.com/{}/"
+def getting_parse_data(i):
+    data = {}
+    i = i.split("_")[0]
+    i = i.split(" ")
+    data["Followers"] = i[0]
+    data["followers"] = i[1]
+    data["Following"] = i[2]
+    data["following"] = i[3]
+    data["Posts"] = i[4]
+    data["posts"] = i[5]
+    return data
+
+def getting_scrape_data(username):
+    r = requests.get(URL.format(username))
+    i = BeautifulSoup(r.text, "html.parser")
+    meta = i.find("meta", property = "og:description")
+    return getting_parse_data(meta.attrs['content'])
+
+if __name__ == "__main__":
+    username = "kemal.gunay"
+    data = getting_scrape_data(username)
+    print("this account has", data["Followers"], data["followers"])
+    print("this account has", data["Following"], data["following"])
+    print("this account has", data["Posts"], data["posts"])
