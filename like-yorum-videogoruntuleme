@@ -1,0 +1,50 @@
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
+#web = 'https://www.thesun.co.uk/sport/football/'
+web = 'https://www.instagram.com/burcubiricik/'
+path = '/Users/kemalgunay/PycharmProjects/chromedriver-2'  # introduce path here
+
+
+
+
+
+# Creating the driver
+driver_service = Service(executable_path=path)
+driver = webdriver.Chrome(service=driver_service)
+driver.get(web)
+
+# aaa = driver.find_elements(by = 'xpath', value =" div").text
+ad = driver.find_elements(by="xpath", value = '//span[@class = "_ac2a _ac2b"]')
+
+# Finding Elements
+for a in ad:
+    print(a.text)
+
+# - post- takipçi - takip edilen
+
+print[ad[0]].text
+ad[0].text
+ad[1].text
+ad[2].text
+
+
+# like sayıları
+likes = driver.find_elements(by="xpath", value = '//div[@class = "_aacl _aaco _aacw _adda _aacx _aada _aade"]')
+for like in likes:
+    print(like.text)
+
+yorum_sayisi = driver.find_elements(by="xpath", value = '//div[@class = "_abm0 _abm1"]')
+for yorum in yorum_sayisi:
+    print(yorum.text)
+
+# video görüntülenme
+video_goruntulenme = driver.find_elements(by="xpath", value = '//div[@class = "_aacl _aaco _aacw _adda _aacx _aad6 _aade"]')
+for video in video_goruntulenme:
+    print(video.text)
+
+# alt
+alt_metinler = driver.find_elements(by="xpath", value = '//div[@class = "_aabd _aa8k _aanf"]')
+for metin in alt_metinler:
+    print(metin.text)
